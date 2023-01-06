@@ -350,13 +350,17 @@ def run_as_headless():
     if args.batch_number:
         settings.batch_to_generate = args.batch_number
 
+    global hack_start_frame
     if args.start_frame:
-        global hack_start_frame
         hack_start_frame = args.start_frame
+    else:
+        hack_start_frame = None
 
+    global hack_end_frame
     if args.end_frame:
-        global hack_end_frame
         hack_end_frame = args.end_frame
+    else:
+        hack_end_frame = None
 
     input = get_bmnft_data()
 
@@ -721,7 +725,7 @@ class ResumeFailedBatch(bpy.types.Operator):
             custom_fields=render_settings["custom_fields"],
         )
 
-        exporter.render_and_save_nfts(input)
+        exporter.render_and_save_nfts(input, hack_start_frame, hack_end_frame)
 
         self.report({'INFO'}, f"Resuming Failed Batch Generation!")
 

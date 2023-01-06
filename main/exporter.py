@@ -139,7 +139,8 @@ def get_batch_data(batch_to_generate, batch_json_save_path):
     return nfts_in_batch, hierarchy, batch_dna_list
 
 
-def render_and_save_nfts(input):
+def render_and_save_nfts(input, start_frame=None, end_frame=None):
+
     """
     Renders the NFT DNA in a Batch#.json, where # is renderBatch in config.py. Turns off the viewport camera and
     the render camera for all items in hierarchy.
@@ -379,10 +380,10 @@ def render_and_save_nfts(input):
                     os.makedirs(animation_folder)
 
                 if not input.enable_debug:
-                    if hack_start_frame:
-                        bpy.context.scene.frame_start = hack_start_frame
-                    if hack_end_frame:
-                        bpy.context.scene.frame_end = hack_end_frame
+                    if start_frame:
+                        bpy.context.scene.frame_start = start_frame
+                    if end_frame:
+                        bpy.context.scene.frame_end = end_frame
 
                     if input.animation_file_format == 'MP4':
                         bpy.context.scene.render.filepath = animation_path
