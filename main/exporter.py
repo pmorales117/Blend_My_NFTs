@@ -337,6 +337,21 @@ def render_and_save_nfts(input, start_frame=None, end_frame=None):
         bpy.context.scene.cycles.device = "GPU"
         bpy.context.scene.render.engine = 'CYCLES'
 
+        if input.erc721_metadata:
+            if not os.path.exists(erc721_metadata_path):
+                os.makedirs(erc721_metadata_path)
+            create_erc721_meta_data(
+                    name,
+                    order_num,
+                    full_single_dna,
+                    dna_dictionary,
+                    metadata_material_dict,
+                    input.custom_fields,
+                    input.enable_custom_fields,
+                    input.erc721_description,
+                    erc721_metadata_path
+            )
+
         # Generation/Rendering:
         if input.enable_images:
 
@@ -554,21 +569,6 @@ def render_and_save_nfts(input, start_frame=None, end_frame=None):
                     input.enable_custom_fields,
                     input.solana_description,
                     solana_metadata_path
-            )
-
-        if input.erc721_metadata:
-            if not os.path.exists(erc721_metadata_path):
-                os.makedirs(erc721_metadata_path)
-            create_erc721_meta_data(
-                    name,
-                    order_num,
-                    full_single_dna,
-                    dna_dictionary,
-                    metadata_material_dict,
-                    input.custom_fields,
-                    input.enable_custom_fields,
-                    input.erc721_description,
-                    erc721_metadata_path
             )
 
         if not os.path.exists(bmnft_data_folder):

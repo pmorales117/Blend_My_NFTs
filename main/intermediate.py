@@ -67,7 +67,7 @@ def send_to_record(input, reverse_order=False):
     )
 
 
-def render_and_save_nfts(input, reverse_order=False):
+def render_and_save_nfts(input, start_frame=None, end_frame=None, reverse_order=False):
     if input.enable_custom_fields:
         scn = bpy.context.scene
         if reverse_order:
@@ -92,4 +92,4 @@ def render_and_save_nfts(input, reverse_order=False):
                 else:
                     input.custom_fields[item.field_name] = item.field_value
 
-    exporter.render_and_save_nfts(input)
+    exporter.render_and_save_nfts(input, start_frame, end_frame)
