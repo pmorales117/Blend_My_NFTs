@@ -15,6 +15,9 @@ bl_info = {
 BMNFTS_VERSION = "v4.6.0"
 LAST_UPDATED = "08:31PM, Jan 1st, 2023"
 
+global hack_start_frame
+global hack_end_frame
+
 # ======== Import handling ======== #
 
 # Blender modules:
@@ -350,13 +353,11 @@ def run_as_headless():
     if args.batch_number:
         settings.batch_to_generate = args.batch_number
 
-    global hack_start_frame
     if args.start_frame:
         hack_start_frame = args.start_frame
     else:
         hack_start_frame = None
 
-    global hack_end_frame
     if args.end_frame:
         hack_end_frame = args.end_frame
     else:
