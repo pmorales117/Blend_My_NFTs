@@ -372,7 +372,7 @@ def run_as_headless():
         intermediate.send_to_record(input)
 
     elif args.operation == 'generate-nfts':
-        intermediate.render_and_save_nfts(input)
+        intermediate.render_and_save_nfts(input, hack_start_frame, hack_end_frame)
 
     elif args.operation == 'refactor-batches':
         refactorer.reformat_nft_collection(input)
