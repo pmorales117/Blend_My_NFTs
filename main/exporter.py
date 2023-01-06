@@ -379,8 +379,10 @@ def render_and_save_nfts(input):
                     os.makedirs(animation_folder)
 
                 if not input.enable_debug:
-                    bpy.context.scene.frame_start = hack_start_frame
-                    bpy.context.scene.frame_end = hack_end_frame
+                    if hack_start_frame:
+                        bpy.context.scene.frame_start = hack_start_frame
+                    if hack_end_frame:
+                        bpy.context.scene.frame_end = hack_end_frame
 
                     if input.animation_file_format == 'MP4':
                         bpy.context.scene.render.filepath = animation_path
