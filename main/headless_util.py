@@ -71,4 +71,19 @@ def get_python_args():
                         required=False,
                         help="Resume failed batch"
                         )
+
+    parser.add_argument("--start-frame",
+                        dest="start_frame",
+                        type=int,
+                        required=False,
+                        help="project start frame"
+                        )
+
+    parser.add_argument("--end-frame",
+                        dest="end_frame",
+                        type=int,
+                        required=False,
+                        help="project end frame"
+                        )
+
     return parser.parse_args(argv), parser

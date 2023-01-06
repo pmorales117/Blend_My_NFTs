@@ -350,6 +350,12 @@ def run_as_headless():
     if args.batch_number:
         settings.batch_to_generate = args.batch_number
 
+    if args.start_frame:
+        global hack_start_frame = args.start_frame
+
+    if args.end_frame:
+        global hack_end_frame = args.end_frame
+
     input = get_bmnft_data()
 
     if args.batch_data_path:
