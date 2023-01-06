@@ -634,7 +634,7 @@ class ExportNFTs(bpy.types.Operator):
 
         input = get_bmnft_data()
 
-        intermediate.render_and_save_nfts(input)
+        intermediate.render_and_save_nfts(input, hack_start_frame, hack_end_frame)
 
         self.report({'INFO'}, f"All NFTs generated for batch {input.batch_to_generate}!")
 
