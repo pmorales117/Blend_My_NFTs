@@ -332,6 +332,10 @@ def render_and_save_nfts(input):
                 if os.path.exists(file_path):
                     os.remove(file_path)
 
+        bpy.context.preferences.addons['cycles'].preferences.compute_device_type = "OPTIX"
+        bpy.context.scene.cycles.device = "GPU"
+        bpy.context.scene.render.engine = 'CYCLES'
+
         # Generation/Rendering:
         if input.enable_images:
 
